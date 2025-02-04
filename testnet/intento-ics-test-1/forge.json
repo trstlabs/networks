@@ -1,0 +1,16 @@
+{
+    "display": {
+        "name": "Intento ICS Testnet 1",
+        "description": "With Intento, any action can be set anywhere at any time based on conditions, seamlessly bridging intentions with execution. Intento is the blockchain for secure, self-custodial and scalable orchestration of intent-driven actions across any blockchain using real-time inputs, on-chain. Intento revolutionizes cross-chain workflows, through it's Cosmos SDK module with IBC, Interchain Accounts and Interchain Query capabilities. Instead of writing or depending on smart contracts, developers and users can now build flows in a self-custodial manner. It is designed to execute all kinds of user intentions across IBC-connected chains, making on-chain processes more intuitive, accessible, and efficient. Intento covers a broad range of use cases, from simple scheduled payments to complex interchain operations.",
+        "links": {
+            "logo": "https://docs.intento.zone/img/icon.png",
+            "discord": "https://discord.gg/RSDFXGxH",
+            "email": "info@trstlabs.xyz",
+            "github": "https://github.com/trstlabs/intento",
+            "telegram": "https://t.me/intentoannouncements",
+            "twitter": "https://x.com/intentozone",
+            "website": "https://www.intento.zone",
+            "whitepaper": "https://docs.intento.zone/background"
+        }
+    }
+}
