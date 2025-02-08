@@ -44,7 +44,7 @@ Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
 Environment="DAEMON_NAME=intentod"
-Environment="DAEMON_HOME=/home/ubuntu/.into"
+Environment="DAEMON_HOME=/home/ubuntu./intento"
 Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 Environment="UNSAFE_SKIP_BACKUP=true"
@@ -62,13 +62,13 @@ sudo systemctl enable intentod.service
 sudo systemctl stop intentod.service
 
 # backup the old data if any
-if [ -d "$HOME/.into.bak" ]; then
+if [ -d "$HOME./intento.bak" ]; then
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-    mv "$HOME/.into.bak" "$HOME/.into.bak_$TIMESTAMP"
+    mv "$HOME./intento.bak" "$HOME./intento.bak_$TIMESTAMP"
 fi
 # move the old data to the backup folder if there is one
-if [ -d "$HOME/.into" ]; then
-    mv "$HOME/.into" "$HOME/.into.bak"
+if [ -d "$HOME./intento" ]; then
+    mv "$HOME./intento" "$HOME./intento.bak"
 fi
 
 # create the $HOME/go/bin folder if it doesn't exist
@@ -76,7 +76,7 @@ mkdir -p $HOME/go/bin
 
 # download the new binary from releases
 echo "Downloading Intento binary..."
-curl -L https://github.com/trstlabs/intento/releases/download/$VERSION/intentod-$VERSION-linux-amd64 -o $HOME/go/bin/intentod || {
+curl -L https://github.com/trstlabs/intento/releases/download/$VERSION/intentod_linux_amd64_$VERSION -o $HOME/go/bin/intentod || {
     echo "Failed to download binary"
     exit 1
 }
@@ -105,10 +105,10 @@ fi
 intentod init $MONIKER --chain-id $CHAINID
 
 # update config files and fetch genesis
-config_toml="$HOME/.into/config/config.toml"
-client_toml="$HOME/.into/config/client.toml"
-app_toml="$HOME/.into/config/app.toml"
-genesis_json="$HOME/.into/config/genesis.json"
+config_toml="$HOME./intento/config/config.toml"
+client_toml="$HOME./intento/config/client.toml"
+app_toml="$HOME./intento/config/app.toml"
+genesis_json="$HOME./intento/config/genesis.json"
 
 sed -i -E "s|cors_allowed_origins = \[\]|cors_allowed_origins = [\"\*\"]|g" $config_toml
 # sed -i -E "s|db_backend = \".*\"|db_backend = \"$DBENGINE\"|g" $config_toml
@@ -131,7 +131,7 @@ sed -i -E "s|keyring-backend = \"os\"|keyring-backend = \"test\"|g" $client_toml
 curl https://raw.githubusercontent.com/trstlabs/networks/refs/heads/main/testnet/$CHAINID/genesis.json -o $genesis_json
 
 # setup cosmovisor
-mkdir -p $HOME/.into/cosmovisor/upgrades/$VERSION/bin && cp -a $HOME/go/bin/intentod $HOME/.into/cosmovisor/upgrades/$VERSION/bin/intentod && rm -rf $HOME/.into/cosmovisor/current && ln -sf $HOME/.into/cosmovisor/upgrades/$VERSION $HOME/.into/cosmovisor/current
+mkdir -p $HOME./intento/cosmovisor/upgrades/$VERSION/bin && cp -a $HOME/go/bin/intentod $HOME./intento/cosmovisor/upgrades/$VERSION/bin/intentod && rm -rf $HOME./intento/cosmovisor/current && ln -sf $HOME./intento/cosmovisor/upgrades/$VERSION $HOME./intento/cosmovisor/current
 
 # start the node
 sudo systemctl start intentod.service
