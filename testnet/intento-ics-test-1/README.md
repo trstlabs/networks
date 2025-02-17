@@ -1,16 +1,16 @@
-Below is an updated guide tailored for the Intento testnet. The testnet uses:
+
+This guide is based on the [Elys Network network repository](https://github.com/elys-network/networks) but has been adapted for Intento. Follow the steps below to set up your node.
 
 - **Chain ID**: `intento-ics-test-1`
 - **Binary**: `intentod`
 - **Consumer ID**: N/A
 
-This guide is based on the [Elys Network network repository](https://github.com/elys-network/networks) but has been adapted for Intento. Follow the steps below to set up your node.
 
 ---
 
 # Joining the Intento Testnet (ICS)
 
-Welcome to the Intento testnet! This guide will walk you through setting up a full node and joining the testnet. The testnet is designed to test Interchain Security (ICS) functionality and ensure overall network stability.
+Welcome to the Intento testnet! This guide will walk you through setting up a full node and joining the testnet. The testnet is designed to test Interchain Security functionality and ensure overall network stability.
 
 ## Quick Reference
 
@@ -31,21 +31,11 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 - **Operating System**: Ubuntu 20.04+ or macOS
 - **Go**: v1.22.7 or later
 
----
-
 ## Node Setup Instructions
 
-_Note: Although many steps are similar to the other ICS testnet setups, all commands and configurations below have been updated for the Intento testnet._
-
-### 1. Validator-Specific Information
-
-For validators: The typical consumer chain opt-in step is not required because the Consumer ID is not applicable for this testnet.
-
-### 2. Node Setup Options
+### 1. Node Setup Options
 
 #### Option A: Quick Setup Script
-
-An example setup script is available to automate installation:
 
 ```bash
 wget https://raw.githubusercontent.com/trstlabs/networks/main/testnet/intento-ics-test-1/create_node.sh
@@ -55,77 +45,56 @@ chmod +x create_node.sh
 
 > **⚠️ Important Note for Validators**:
 >
-> 1. **Review the Script**: Before running, confirm that the script does not automatically start the node. Adjust if necessary.
-> 2. **Key Replacement**: If you are a validator, replace the generated key at `$HOME/.intento/config/priv_validator_key.json` with your actual testnet key file.
-> 3. **Timing**: Only start the node after replacing your key to prevent any risk of double signing.
+> - Review the script before running it.
+> - Replace the generated key at `$HOME/.intento/config/priv_validator_key.json` with your actual testnet key.
+> - Start the node only after replacing your key to prevent double signing.
 
 #### Option B: Manual Setup
 
 1. **Clone the Repository and Build the Binary**
 
-Clone the Intento repository and build the binary:
+   ```bash
+   git clone https://github.com/trstlabs/intento.git
+   cd intento
+   git checkout main
+   make install
+   ```
 
-```bash
-git clone https://github.com/trstlabs/intento.git
-cd intento
-git checkout main
-make install
-```
+   Initialize your node:
 
-This will install the `intentod` binary. Initialize your node with:
-
-```bash
-intentod init [your-moniker] --chain-id intento-ics-test-1
-```
+   ```bash
+   intentod init [your-moniker] --chain-id intento-ics-test-1
+   ```
 
 2. **Configure Your Node**
 
-a. **Download the Genesis File**
+   - **Download the Genesis File**:
+     ```bash
+     curl -o $HOME/.intento/config/genesis.json https://raw.githubusercontent.com/trstlabs/networks/main/testnet/intento-ics-test-1/genesis.json
+     ```
+   - **Replace Validator Key (For Validators Only)**:
+     ```bash
+     mv /path/to/your/priv_validator_key.json $HOME/.intento/config/priv_validator_key.json
+     ```
+   - **Edit Node Settings**:
+     Update `$HOME/.intento/config/config.toml` with persistent peers and seeds from testnet docs.
 
-Download the genesis file to set up your node configuration:
+3. **Fake Cosmos Hub Registration** (Required for ICS Testing)
 
-```bash
-curl -o $HOME/.intento/config/genesis.json https://raw.githubusercontent.com/trstlabs/networks/main/testnet/intento-ics-test-1/genesis.json
-```
-
-b. **Replace the Validator Key (For Validators Only)**
-
-If you are running a validator, replace the auto-generated key with your actual testnet key:
-
-```bash
-mv /path/to/your/priv_validator_key.json $HOME/.intento/config/priv_validator_key.json
-```
-
-c. **Edit Node Settings**
-
-- **Persistent Peers & Seeds**: Update the `config.toml` file located at `$HOME/.intento/config/config.toml` with persistent peers and seeds as specified by the testnet docs.
-- **Minimum Gas Prices**: Edit `$HOME/.intento/config/app.toml` to set the minimum gas prices. For example:
-
-  ```toml
-  minimum-gas-prices = "0.003uinto,0.001ibc/<IBC_DENOM>"
-  ```
-
-  Replace `<IBC_DENOM>` with the proper denomination provided in further testnet documentation.
-
-d. **Optional: Governor Registration**
-
-If you wish to register as a governor, follow these steps:
+Before setting up your node, validators must opt-in\* to the Intento testnet via a fake Cosmos Hub. Follow these steps:
 
 - **Retrieve Your Validator Pubkey**:
-
   ```bash
-  intentod cometbft show-validator
+  gaiad cometbft show-validator
   ```
-
-- **Create a `governor.json` File**:
-
+- **Create a `validator.json` File**:
   ```bash
-  cat <<EOF > /tmp/governor.json
+  cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "10000000uinto",
+      "amount": "10000000uatom",
       "moniker": "[MONIKER]",
-      "identity": "Intento governor",
+      "identity": "validator",
       "website": "https://intentotestnet.example.com",
       "security": "team@intentotestnet.example.com",
       "details": "Optional validator details",
@@ -136,17 +105,30 @@ If you wish to register as a governor, follow these steps:
   }
   EOF
   ```
-
-- **Register as a Governor**:
-
+- **Register as a Validator**:
   ```bash
-  intentod tx staking create-validator \
-      /tmp/governor.json \
+  gaiad tx staking create-validator \
+      /tmp/validator.json \
       --from [YOUR_KEY] \
-      --chain-id intento-ics-test-1 \
-      --fees 20000uinto \
+      --chain-id GAIA \
+      --fees 20000uatom \
       --gas auto
+      --node [tba]
   ```
+
+**Opt-in to the Consumer Chain**:
+
+```bash
+gaiad tx provider opt-in intento-ics-test-1 --from [YOUR_KEY] --chain-id GAIA --fees 5000uatom --gas auto --node [tba]
+```
+
+**Verify Your Opt-in Status**:
+
+```bash
+gaiad q provider consumer-opt-in intento-ics-test-1 --chain-id GAIA  --node [tba]
+```
+
+Once the opt-in is successful, you can proceed with setting up your node.
 
 ---
 
@@ -166,33 +148,31 @@ intentod start
 
 1. **Create a Service File**
 
-Create a systemd service file:
+   ```bash
+   sudo nano /etc/systemd/system/intentod.service
+   ```
 
-```bash
-sudo nano /etc/systemd/system/intentod.service
-```
+2. **Add Configuration**
 
-2. **Add the Following Configuration**
+   ```ini
+   [Unit]
+   Description=Intento Testnet Node
+   After=network.target
 
-Replace `[user]` with your Linux username:
+   [Service]
+   User=[user]
+   ExecStart=$(which intentod) start
+   Restart=always
+   RestartSec=3
+   LimitNOFILE=65535
 
-```ini
-[Unit]
-Description=Intento Testnet Node
-After=network.target
+   [Install]
+   WantedBy=multi-user.target
+   ```
 
-[Service]
-User=[user]
-ExecStart=$(which intentod) start
-Restart=always
-RestartSec=3
-LimitNOFILE=65535
+3. **Enable and Start the Service**
 
-[Install]
-WantedBy=multi-user.target
-```
-
-3. **Enable and Manage the Service**
+4. **Enable and Manage the Service**
 
 Reload systemd and enable your service:
 
