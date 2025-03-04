@@ -113,19 +113,19 @@ Before setting up your node, validators must opt-in\* to the Intento testnet via
       --chain-id GAIA \
       --fees 20000uatom \
       --gas auto
-      --node [tba]
+      --node https://provider-test-rpc.intento.zone/
   ```
 
 **Opt-in to the Consumer Chain**:
 
 ```bash
-gaiad tx provider opt-in intento-ics-test-1 --from [YOUR_KEY] --chain-id GAIA --fees 5000uatom --gas auto --node [tba]
+gaiad tx provider opt-in intento-ics-test-1 --from [YOUR_KEY] --chain-id GAIA --fees 5000uatom --gas auto --node https://provider-test-rpc.intento.zone/
 ```
 
 **Verify Your Opt-in Status**:
 
 ```bash
-gaiad q provider consumer-opt-in intento-ics-test-1 --chain-id GAIA  --node [tba]
+gaiad q provider consumer-opt-in intento-ics-test-1 --chain-id GAIA  --node https://provider-test-rpc.intento.zone/
 ```
 
 Once the opt-in is successful, you can proceed with setting up your node.
