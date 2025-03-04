@@ -68,7 +68,7 @@ Ensure your changes align with the repository’s structure and follow best prac
 Other useful links
 
 - [Intento website](https://intento.zone/)
-- [Discord](https://discord.gg/vEtmATAJ)
+- [Discord](https://discord.gg/hsVf9sYyZW)
 - [TriggerPortal - one-stop tool for Flows](https://triggerportal.zone/)
 - [Block Explorer](https://explorer.intento.zone/)
 - [Testnet Points Program ](https://github.com/trstlabs/intento-testnet-points-program)
