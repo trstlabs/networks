@@ -13,6 +13,7 @@ This repository contains chain configurations and setup instructions for running
   - [Chain Configurations](#chain-configurations)
   - [Support](#support)
   - [Contributing](#contributing)
+  - [Learn more](#learn-more)
 
 ---
 
@@ -59,3 +60,17 @@ We welcome contributions! To contribute:
 4. Submit a pull request.
 
 Ensure your changes align with the repository’s structure and follow best practices.
+
+## Learn more
+
+[Intento documentation](https://docs.intento.zone)
+
+Other useful links
+
+- [Intento website](https://intento.zone/)
+- [Discord](https://discord.gg/vEtmATAJ)
+- [TriggerPortal - one-stop tool for Flows](https://triggerportal.zone/)
+- [Block Explorer](https://explorer.intento.zone/)
+- [Testnet Points Program ](https://github.com/trstlabs/intento-testnet-points-program)
+- [Networks repository](https://github.com/trstlabs/networks)
+- [TRST Labs website](https://trstlabs.xyz/)
