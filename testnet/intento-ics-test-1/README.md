@@ -1,10 +1,8 @@
-
-This guide is based on the [Elys Network network repository](https://github.com/elys-network/networks) but has been adapted for Intento. Follow the steps below to set up your node.
+This guide is loosely based on the [Elys Network network repository](https://github.com/elys-network/networks) but has been adapted for Intento. Follow the steps below to set up your node.
 
 - **Chain ID**: `intento-ics-test-1`
 - **Binary**: `intentod`
-- **Consumer ID**: N/A
-
+- **Consumer ID**: 0
 
 ---
 
@@ -14,7 +12,7 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 
 ## Quick Reference
 
-- **Consumer ID**: TBA
+- **Consumer ID**: 0
 - **Chain ID**: `intento-ics-test-1`
 
 ## Hardware Requirements
@@ -28,20 +26,10 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 
 ## Software Requirements
 
-- **Operating System**: Ubuntu 20.04+ or macOS
+- **Operating System**: Linux 20.04+
 - **Go**: v1.22.7 or later
 
 ## Node Setup Instructions
-
-### 1. Node Setup Options
-
-#### Option A: Quick Setup Script
-
-```bash
-wget https://raw.githubusercontent.com/trstlabs/networks/main/testnet/intento-ics-test-1/create_node.sh
-chmod +x create_node.sh
-./create_node.sh "your-moniker-name"
-```
 
 > **⚠️ Important Note for Validators**:
 >
@@ -49,24 +37,24 @@ chmod +x create_node.sh
 > - Replace the generated key at `$HOME/.intento/config/priv_validator_key.json` with your actual testnet key.
 > - Start the node only after replacing your key to prevent double signing.
 
-#### Option B: Manual Setup
+### Node Setup
 
 1. **Clone the Repository and Build the Binary**
 
-   ```bash
-   git clone https://github.com/trstlabs/intento.git
-   cd intento
-   git checkout main
-   make install
-   ```
+```bash
+git clone https://github.com/trstlabs/intento.git
+cd intento
+git checkout main
+make install
+```
 
-   Initialize your node:
+Initialize your node:
 
-   ```bash
-   intentod init [your-moniker] --chain-id intento-ics-test-1
-   ```
+```bash
+intentod init [your-moniker] --chain-id intento-ics-test-1
+```
 
-2. **Configure Your Node**
+1. **Configure Your Node**
 
    - **Download the Genesis File**:
      ```bash
@@ -77,22 +65,65 @@ chmod +x create_node.sh
      mv /path/to/your/priv_validator_key.json $HOME/.intento/config/priv_validator_key.json
      ```
    - **Edit Node Settings**:
-     Update `$HOME/.intento/config/config.toml` with persistent peers and seeds from testnet docs.
+     Update `$HOME/.intento/config/config.toml` with persistent peers and seeds and other variables. These are to be shared amongst validators in Discord. We will be adding a list of peers and seeds soon.
 
-3. **Fake Cosmos Hub Registration** (Required for ICS Testing)
+From ./create_node.sh example script:
+
+```bash
+config_toml="$HOME./intento/config/config.toml"
+client_toml="$HOME./intento/config/client.toml"
+app_toml="$HOME./intento/config/app.toml"
+genesis_json="$HOME./intento/config/genesis.json"
+
+ATOM="ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
+CHAINID="intento-ics-test-1"
+
+sed -i -E "s|cors_allowed_origins = \[\]|cors_allowed_origins = [\"*\"]|g" $config_toml
+
+sed -i -E "s|127.0.0.1|0.0.0.0|g" $config_toml
+sed -i -E "s|seeds = \".*\"|seeds = \"$SEED\"|g" $config_toml
+sed -i -E "s|persistent_peers = \".*\"|persistent_peers = \"$PEERS\"|g" $config_toml
+
+sed -i -E "s|minimum-gas-prices = \".*\"|minimum-gas-prices = \"0.001uinto,0.001$ATOM\"|g" $app_toml
+sed -i -E '/\[api\]/,/^enable = .*$/ s/^enable = .*$/enable = true/' $app_toml
+sed -i -E 's|swagger = .*|swagger = true|g' $app_toml
+sed -i -E "s|localhost|0.0.0.0|g" $app_toml
+sed -i -E 's|unsafe-cors = .*|unsafe-cors = true|g' $app_toml
+
+sed -i -E "s|chain-id = \".*\"|chain-id = \"$CHAINID\"|g" $client_toml
+sed -i -E "s|keyring-backend = \"os\"|keyring-backend = \"test\"|g" $client_toml
+```
+
+1. **Fake Cosmos Hub Registration** (Required for ICS Testing)
 
 Before setting up your node, validators must opt-in\* to the Intento testnet via a fake Cosmos Hub. Follow these steps:
 
+- **Request ATOM from Discord faucet**
+
+**$request cosmos1... cosmos-test**
+
+- This will send you 2000000 fake uatom to your wallet. Use it wisely. Faucet is limited to 1 request per day per address.
+- **Clone the Gaia Repository and Build the Binary**
+
+  ```bash
+  git clone https://github.com/cosmos/gaia.git
+  cd gaia
+  git checkout v22.1.0
+  make install # or make build, in case of issues you may try also try LDFLAGS="" make install
+  ```
+
+  For more information, please check [installing gaia](https://hub.cosmos.network/main/getting-started/installation) or `wasmvm` [documentation](https://github.com/CosmWasm/wasmvm).
+
 - **Retrieve Your Validator Pubkey**:
   ```bash
-  gaiad cometbft show-validator
+  gaiad tendermint show-validator
   ```
 - **Create a `validator.json` File**:
   ```bash
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "10000000uatom",
+      "amount": "100000uatom",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",

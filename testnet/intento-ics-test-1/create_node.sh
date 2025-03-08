@@ -14,11 +14,9 @@ fi
 CHAINID="intento-ics-test-1"
 MONIKER="$1"
 DENOM="uinto"
-# USDC="ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349"
+
 ATOM="ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
-# DBENGINE="pebbledb"
-BLOCKTIME_COMMIT="1s"
-BLOCKTIME_PROPOSE="1s"
+
 VERSION="" #Get latest version from https://github.com/trstlabs/intento/releases
 
 PEERS=""
@@ -111,10 +109,8 @@ app_toml="$HOME./intento/config/app.toml"
 genesis_json="$HOME./intento/config/genesis.json"
 
 sed -i -E "s|cors_allowed_origins = \[\]|cors_allowed_origins = [\"\*\"]|g" $config_toml
-# sed -i -E "s|db_backend = \".*\"|db_backend = \"$DBENGINE\"|g" $config_toml
+
 sed -i -E "s|127.0.0.1|0.0.0.0|g" $config_toml
-sed -i -E "s|timeout_commit = \"5s\"|timeout_commit = \"$BLOCKTIME_COMMIT\"|g" $config_toml
-sed -i -E "s|timeout_propose = \"5s\"|timeout_propose = \"$BLOCKTIME_PROPOSE\"|g" $config_toml
 sed -i -E "s|seeds = \".*\"|seeds = \"$SEED\"|g" $config_toml
 sed -i -E "s|persistent_peers = \".*\"|persistent_peers = \"$PEERS\"|g" $config_toml
 
@@ -123,7 +119,7 @@ sed -i -E '/\[api\]/,/^enable = .*$/ s/^enable = .*$/enable = true/' $app_toml
 sed -i -E 's|swagger = .*|swagger = true|g' $app_toml
 sed -i -E "s|localhost|0.0.0.0|g" $app_toml
 sed -i -E 's|unsafe-cors = .*|unsafe-cors = true|g' $app_toml
-# sed -i -E "s|app-db-backend = \".*\"|app-db-backend = \"$DBENGINE\"|g" $app_toml
+
 
 sed -i -E "s|chain-id = \".*\"|chain-id = \"$CHAINID\"|g" $client_toml
 sed -i -E "s|keyring-backend = \"os\"|keyring-backend = \"test\"|g" $client_toml
