@@ -44,9 +44,10 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout main
-make install
+git checkout v0.9.1
+make install 
 ```
+Make install installs intentod at ./cmd/intentod. You can also run `make build` to build the binary.
 
 Initialize your node:
 
@@ -96,13 +97,18 @@ sed -i -E "s|keyring-backend = \"os\"|keyring-backend = \"test\"|g" $client_toml
 
 1. **Fake Cosmos Hub Registration** (Required for ICS Testing)
 
-Before setting up your node, validators must opt-in\* to the Intento testnet via a fake Cosmos Hub. Follow these steps:
+Before setting up your node, validators must opt-in\* to the Intento testnet via a fake Cosmos Hub. 
+
+NOTE: It is not needed to run a provider chain node for the testnet!
+
+Follow these steps:
 
 - **Request ATOM from Discord faucet**
 
 **$request cosmos1... cosmos-test**
 
 - This will send you 2000000 fake uatom to your wallet. Use it wisely. Faucet is limited to 1 request per day per address.
+- 
 - **Clone the Gaia Repository and Build the Binary**
 
   ```bash
