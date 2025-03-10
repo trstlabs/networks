@@ -45,8 +45,9 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 git clone https://github.com/trstlabs/intento.git
 cd intento
 git checkout v0.9.1
-make install 
+make install
 ```
+
 Make install installs intentod at ./cmd/intentod. You can also run `make build` to build the binary.
 
 Initialize your node:
@@ -97,7 +98,7 @@ sed -i -E "s|keyring-backend = \"os\"|keyring-backend = \"test\"|g" $client_toml
 
 1. **Fake Cosmos Hub Registration** (Required for ICS Testing)
 
-Before setting up your node, validators must opt-in\* to the Intento testnet via a fake Cosmos Hub. 
+Before setting up your node, validators must opt-in\* to the Intento testnet via a fake Cosmos Hub.
 
 NOTE: It is not needed to run a provider chain node for the testnet!
 
@@ -108,7 +109,7 @@ Follow these steps:
 **$request cosmos1... cosmos-test**
 
 - This will send you 2000000 fake uatom to your wallet. Use it wisely. Faucet is limited to 1 request per day per address.
-- 
+-
 - **Clone the Gaia Repository and Build the Binary**
 
   ```bash
@@ -172,6 +173,7 @@ Once the opt-in is successful, you can proceed with setting up your node.
 ### 3. Running Your Node
 
 You can start your node either directly or as a system service.
+Before you do this, you should import the genesis file from this repo into your node (.intento/config/genesis.json). This will become available after the update-consumer transaction happens which finalizes the validator set.
 
 #### Option A: Direct Start
 
@@ -226,6 +228,8 @@ sudo systemctl stop intentod
 # To view logs
 sudo journalctl -u intentod -f -o cat
 ```
+
+After 2/3 of validators run the node, the chain will start producing blocks.
 
 ---
 
