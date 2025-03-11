@@ -31,7 +31,7 @@ chmod +x create_node.sh
 ./create_node.sh
 ```
 
-This script will install dependencies, download the required binaries, and configure the node accordingly.
+This script will install dependencies, download the required binaries, and configure the node accordingly. For validators, it is also necesarry to opt-in to the consumer chain. More information is available in the respective network's README.
 
 ## Chain Configurations
 
@@ -47,7 +47,7 @@ Make sure to update these files according to the latest network requirements.
 For any issues, reach out via:
 
 - GitHub Issues
-- Community Discord/Telegram
+- Community Discord
 - Official documentation
 
 ## Contributing
@@ -69,7 +69,7 @@ Other useful links
 
 - [Intento website](https://intento.zone/)
 - [Discord](https://discord.gg/hsVf9sYyZW)
-- [TriggerPortal - one-stop tool for Flows](https://triggerportal.zone/)
+- [TriggerPortal - one-stop tool for intent-based flows](https://triggerportal.zone/)
 - [Block Explorer](https://explorer.intento.zone/)
 - [Testnet Points Program ](https://github.com/trstlabs/intento-testnet-points-program)
 - [Networks repository](https://github.com/trstlabs/networks)
