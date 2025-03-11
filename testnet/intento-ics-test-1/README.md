@@ -130,7 +130,7 @@ Follow these steps:
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "100000uatom",
+      "amount": "1000000uatom",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",
