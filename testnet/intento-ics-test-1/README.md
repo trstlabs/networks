@@ -44,7 +44,7 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v0.9.1
+git checkout v0.9.2
 make install
 ```
 
@@ -149,7 +149,7 @@ Follow these steps:
       /tmp/validator.json \
       --from [YOUR_KEY] \
       --chain-id GAIA \
-      --fees 20000uatom \
+      --fees 30000uatom \
       --gas auto
       --node https://provider-test-rpc.intento.zone/
   ```
@@ -157,7 +157,7 @@ Follow these steps:
 **Opt-in to the Consumer Chain**:
 
 ```bash
-gaiad tx provider opt-in 0 --from [YOUR_KEY] --chain-id GAIA --fees 5000uatom --gas auto --node https://provider-test-rpc.intento.zone/
+gaiad tx provider opt-in 0 --from [YOUR_KEY] --chain-id GAIA --fees 8000uatom --gas auto --node https://provider-test-rpc.intento.zone/
 ```
 
 **Verify Your Opt-in Status**:
