@@ -121,6 +121,11 @@ Follow these steps:
 
   For more information, please check [installing gaia](https://hub.cosmos.network/main/getting-started/installation) or `wasmvm` [documentation](https://github.com/CosmWasm/wasmvm).
 
+- **Initialize the directory**:
+  ```bash
+   gaiad init --home $PROVIDER_HOME --chain-id GAIA <node-moniker>
+  ```
+
 - **Retrieve Your Validator Pubkey**:
   ```bash
   gaiad tendermint show-validator
@@ -130,7 +135,7 @@ Follow these steps:
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "100000uatom",
+      "amount": "1000000uatom",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",
