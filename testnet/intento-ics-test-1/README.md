@@ -72,10 +72,10 @@ intentod init [your-moniker] --chain-id intento-ics-test-1
 From ./create_node.sh example script:
 
 ```bash
-config_toml="$HOME./intento/config/config.toml"
-client_toml="$HOME./intento/config/client.toml"
-app_toml="$HOME./intento/config/app.toml"
-genesis_json="$HOME./intento/config/genesis.json"
+config_toml="$HOME/.intento/config/config.toml"
+client_toml="$HOME/.intento/config/client.toml"
+app_toml="$HOME/.intento/config/app.toml"
+genesis_json="$HOME/.intento/config/genesis.json"
 
 ATOM="ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
 CHAINID="intento-ics-test-1"
