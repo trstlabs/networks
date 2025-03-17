@@ -8,7 +8,7 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 
 ## Quick Reference
 
-- **Consumer ID**: 3 
+- **Consumer ID**: 4 
 - **Binary**: `intentod`
 - **Chain ID**: `intento-ics-test-1`
 
@@ -159,13 +159,13 @@ Follow these steps:
 **Opt-in to the Consumer Chain**:
 
 ```bash
-gaiad tx provider opt-in 3 --from [YOUR_KEY] --chain-id GAIA --fees 8000uatom --gas auto --node https://provider-test-rpc.intento.zone/
+gaiad tx provider opt-in 4 --from [YOUR_KEY] --chain-id GAIA --fees 8000uatom --gas auto --node https://provider-test-rpc.intento.zone/
 ```
 
 **Verify Your Opt-in Status**:
 
 ```bash
-gaiad q provider consumer-opted-in-validators 3 --chain-id GAIA  --node https://provider-test-rpc.intento.zone/
+gaiad q provider consumer-opted-in-validators 4 --chain-id GAIA  --node https://provider-test-rpc.intento.zone/
 ```
 
 Once the opt-in is successful, you can proceed with setting up your node.

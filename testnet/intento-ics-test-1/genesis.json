@@ -256,7 +256,7 @@
         "reward_denoms": [],
         "provider_reward_denoms": [],
         "retry_delay_period": "3600s",
-        "consumer_id": "3"
+        "consumer_id": "4"
       },
       "provider": {
         "client_state": {
@@ -274,7 +274,7 @@
           },
           "latest_height": {
             "revision_number": "0",
-            "revision_height": "246418"
+            "revision_height": "247195"
           },
           "proof_specs": [
             {
@@ -332,9 +332,9 @@
           "allow_update_after_misbehaviour": false
         },
         "consensus_state": {
-          "timestamp": "2025-03-17T14:54:59.658991328Z",
+          "timestamp": "2025-03-17T15:27:07.711266639Z",
           "root": {
-            "hash": "a/xb7jUT4nxt5paymA7MFXoj9a1Y281GnJkx8sufY3g="
+            "hash": "HSiwj40IpOz9jRlktj3HCQlt0QlbFUjvPV8FVULWAAg="
           },
           "next_validators_hash": "6E747C83980948338DB00F8E74E5E0BC67A91A038EA029437DB6E60710910F40"
         },
