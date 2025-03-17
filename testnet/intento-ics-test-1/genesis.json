@@ -1,7 +1,7 @@
 {
   "app_name": "intentod",
-  "app_version": "v0.9.2",
-  "genesis_time": "2025-03-13T14:51:56.592979166+01:00",
+  "app_version": "v0.9.2-r1",
+  "genesis_time": "2025-03-17T14:51:56.592979166+01:00",
   "chain_id": "intento-ics-test-1",
   "initial_height": 1,
   "app_hash": null,
@@ -118,6 +118,13 @@
           "pub_key": null,
           "account_number": "8",
           "sequence": "0"
+        },
+        {
+          "@type": "/cosmos.auth.v1beta1.BaseAccount",
+          "address": "into1k74g5w0zwftp675lwv4flyqw9u54pknj7cg49x",
+          "pub_key": null,
+          "account_number": "9",
+          "sequence": "0"
         }
       ]
     },
@@ -176,6 +183,15 @@
           ]
         },
         {
+          "address": "into1k74g5w0zwftp675lwv4flyqw9u54pknj7cg49x",
+          "coins": [
+            {
+              "denom": "uinto",
+              "amount": "1000000000"
+            }
+          ]
+        },
+        {
           "address": "into1mxfknp54yq6nz2tnf9j3vh5sgsdav5val3nxry",
           "coins": [
             {
@@ -212,7 +228,12 @@
           ]
         }
       ],
-      "supply": [],
+      "supply": [
+        {
+          "denom": "uinto",
+          "amount": "421001100000000"
+        }
+      ],
       "denom_metadata": [],
       "send_enabled": []
     },
@@ -235,7 +256,7 @@
         "reward_denoms": [],
         "provider_reward_denoms": [],
         "retry_delay_period": "3600s",
-        "consumer_id": "0"
+        "consumer_id": "3"
       },
       "provider": {
         "client_state": {
@@ -253,7 +274,7 @@
           },
           "latest_height": {
             "revision_number": "0",
-            "revision_height": "107700"
+            "revision_height": "246418"
           },
           "proof_specs": [
             {
@@ -311,16 +332,16 @@
           "allow_update_after_misbehaviour": false
         },
         "consensus_state": {
-          "timestamp": "2025-03-13T15:41:37.612428124Z",
+          "timestamp": "2025-03-17T14:54:59.658991328Z",
           "root": {
-            "hash": "GK2wjRhV1w0S9Snw6hsGq+CV5Y6pRB8ry6+vT04HI9Y="
+            "hash": "a/xb7jUT4nxt5paymA7MFXoj9a1Y281GnJkx8sufY3g="
           },
           "next_validators_hash": "6E747C83980948338DB00F8E74E5E0BC67A91A038EA029437DB6E60710910F40"
         },
         "initial_val_set": [
           {
             "pub_key": {
-              "ed25519": "ZGcguVbxOngyhs2Yh7QMiHirdZgfMRKpVhti5pznWOs="
+              "ed25519": "EEunPT5ePtn6DrCGuA9CjLOkSg3qZR5LRqyJr2pV7vk="
             },
             "power": "1"
           }
@@ -334,7 +355,7 @@
         "amount": "0"
       },
       "params": {
-        "airdrop_start_time": "2025-03-10T13:51:56.592979166Z",
+        "airdrop_start_time": "2025-03-17T13:51:56.592979166Z",
         "duration_until_decay": "432000s",
         "duration_of_decay": "432000s",
         "claim_denom": "uinto",
@@ -562,7 +583,7 @@
       },
       "params": {
         "mint_denom": "uinto",
-        "start_time": "2025-03-10T13:51:56.592979209Z",
+        "start_time": "2025-03-17T14:51:56.592979209Z",
         "initial_annual_provisions": "40000000000000.000000000000000000",
         "reduction_factor": "0.750000000000000000",
         "blocks_per_year": "15770000"
@@ -646,3 +667,4 @@
     }
   }
 }
+
