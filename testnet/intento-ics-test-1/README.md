@@ -1,9 +1,5 @@
 This guide is loosely based on the [Elys Network network repository](https://github.com/elys-network/networks) but has been adapted for Intento. Follow the steps below to set up your node.
 
-- **Chain ID**: `intento-ics-test-1`
-- **Binary**: `intentod`
-- **Consumer ID**: 0
-
 ---
 
 # Joining the Intento Testnet (ICS)
@@ -12,7 +8,8 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 
 ## Quick Reference
 
-- **Consumer ID**: 0
+- **Consumer ID**: 3 
+- **Binary**: `intentod`
 - **Chain ID**: `intento-ics-test-1`
 
 ## Hardware Requirements
@@ -44,7 +41,7 @@ Welcome to the Intento testnet! This guide will walk you through setting up a fu
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v0.9.2
+git checkout v0.9.2-r1
 make install
 ```
 
@@ -162,13 +159,13 @@ Follow these steps:
 **Opt-in to the Consumer Chain**:
 
 ```bash
-gaiad tx provider opt-in 0 --from [YOUR_KEY] --chain-id GAIA --fees 8000uatom --gas auto --node https://provider-test-rpc.intento.zone/
+gaiad tx provider opt-in 3 --from [YOUR_KEY] --chain-id GAIA --fees 8000uatom --gas auto --node https://provider-test-rpc.intento.zone/
 ```
 
 **Verify Your Opt-in Status**:
 
 ```bash
-gaiad q provider consumer-opted-in-validators 0 --chain-id GAIA  --node https://provider-test-rpc.intento.zone/
+gaiad q provider consumer-opted-in-validators 3 --chain-id GAIA  --node https://provider-test-rpc.intento.zone/
 ```
 
 Once the opt-in is successful, you can proceed with setting up your node.
