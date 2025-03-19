@@ -250,6 +250,37 @@ After 2/3 of the voting power runs their node, the chain produces blocks.
 
 Next, you can set your node up to be a governor on the consumer chain by registering as a validator.
 
+- **Retrieve Your Validator Pubkey**:
+  ```bash
+  intentod tendermint show-validator
+  ```
+- **Create a `validator.json` File**:
+  ```bash
+  cat <<EOF > /tmp/validator.json
+  {
+      "pubkey": "[PUBKEY]",
+      "amount": "1000000uinto",
+      "moniker": "[MONIKER]",
+      "identity": "validator",
+      "website": "https://intentotestnet.example.com",
+      "security": "team@intentotestnet.example.com",
+      "details": "Optional validator details",
+      "commission-rate": "0.1",
+      "commission-max-rate": "0.2",
+      "commission-max-change-rate": "0.01",
+      "min-self-delegation": "1"
+  }
+  EOF
+  ```
+- **Register as a Validator**:
+  ```bash
+  intentod tx staking create-validator \
+      /tmp/validator.json \
+      --from [YOUR_KEY] \
+      --chain-id GAIA \
+      --gas auto
+      --gas-adjustment 2
+  ```
 ---
 
 ## IBC Connection Information
