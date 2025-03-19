@@ -6,11 +6,14 @@ This guide is loosely based on the [Elys Network network repository](https://git
 
 Welcome to the Intento testnet! This guide will walk you through setting up a full node and joining the testnet. The testnet is designed to test Interchain Security functionality and ensure overall network stability.
 
+We implement an allowlist for the validators. If you are not on the allowlist, you will not be able to join the network as a validator. If you are an active Cosmos Hub validator on mainnet, please reach out to us on Discord for getting on the allow list .
+
 ## Quick Reference
 
 - **Consumer ID**: 4 
 - **Binary**: `intentod`
 - **Chain ID**: `intento-ics-test-1`
+- **Critera**: `Active Cosmos Hub validator on mainnet`
 
 ## Hardware Requirements
 
@@ -151,15 +154,27 @@ Follow these steps:
       /tmp/validator.json \
       --from [YOUR_KEY] \
       --chain-id GAIA \
-      --fees 30000uatom \
+      --gas-adjustment 2 \
       --gas auto
       --node https://provider-test-rpc.intento.zone/
   ```
 
 **Opt-in to the Consumer Chain**:
 
+- initialize intento in step 1 creates a new consensus key in ~/.intento/config/priv_validator_key.json. Show consensus key:
+
 ```bash
-gaiad tx provider opt-in 4 --from [YOUR_KEY] --chain-id GAIA --fees 8000uatom --gas auto --node https://provider-test-rpc.intento.zone/
+intentod tendermint show-validator
+```
+Then opt-in with dedicated key
+```bash
+gaiad tx provider opt-in 4 [consumer-pubkey] --from [YOUR_KEY] --chain-id GAIA --gas auto --gas-adjustment 2 --gas auto --node https://provider-test-rpc.intento.zone/
+```
+
+- or: opt-in without passing a dedicated key, assign a consumer key:
+
+```bash
+gaiad tx provider assign-consensus-key [consumer-id] [consumer-pubkey] [flags]
 ```
 
 **Verify Your Opt-in Status**:
@@ -231,7 +246,9 @@ sudo systemctl stop intentod
 sudo journalctl -u intentod -f -o cat
 ```
 
-After 2/3 of validators run the node, the chain will start producing blocks.
+After 2/3 of the voting power runs their node, the chain produces blocks.
+
+Next, you can set your node up to be a governor on the consumer chain by registering as a validator.
 
 ---
 
