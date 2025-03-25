@@ -110,7 +110,7 @@ Follow these steps:
 **$request cosmos1... cosmos-test**
 
 - This will send you 2000000 fake uatom to your wallet. Use it wisely. Faucet is limited to 1 request per day per address.
--
+
 - **Clone the Gaia Repository and Build the Binary**
 
   ```bash
@@ -162,19 +162,19 @@ Follow these steps:
 
 **Opt-in to the Consumer Chain**:
 
-- initialize Intento in step 1 creates a new consensus key in ~/.intento/config/priv_validator_key.json. Show consensus key:
+- Initialize Intento in step 1 creates a new consensus key in ~/.intento/config/priv_validator_key.json. Show consensus key:
 
 ```bash
 intentod tendermint show-validator
 ```
 
-Then opt-in with dedicated key:
+- Then opt-in with dedicated key:
 
 ```bash
 gaiad tx provider opt-in 4 [consumer-pubkey] --from [YOUR_KEY] --chain-id GAIA --gas auto --gas-adjustment 2 --gas auto --node https://provider-test-rpc.intento.zone/
 ```
 
-- or: opt-in without passing a dedicated key, assign a consumer key:
+OR opt-in without passing a dedicated key, assign a consumer key:
 
 ```bash
 gaiad tx provider assign-consensus-key [consumer-id] [consumer-pubkey] [flags]
@@ -186,7 +186,7 @@ gaiad tx provider assign-consensus-key [consumer-id] [consumer-pubkey] [flags]
 gaiad q provider consumer-opted-in-validators 4 --chain-id GAIA  --node https://provider-test-rpc.intento.zone/
 ```
 
-Once the opt-in is successful, you can proceed with setting up your node.
+Once the opt-in is successful, you should proceed with directly setting up your node. The chain may halt in case you are not active when the ICS validator set update happens.
 
 ---
 
