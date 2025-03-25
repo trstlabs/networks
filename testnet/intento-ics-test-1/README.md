@@ -106,6 +106,7 @@ Follow these steps:
 
 - **Request ATOM from Discord faucet**
 
+
 **$request cosmos1... cosmos-test**
 
 - This will send you 2000000 fake uatom to your wallet. Use it wisely. Faucet is limited to 1 request per day per address.
@@ -161,12 +162,14 @@ Follow these steps:
 
 **Opt-in to the Consumer Chain**:
 
-- initialize intento in step 1 creates a new consensus key in ~/.intento/config/priv_validator_key.json. Show consensus key:
+- initialize Intento in step 1 creates a new consensus key in ~/.intento/config/priv_validator_key.json. Show consensus key:
 
 ```bash
 intentod tendermint show-validator
 ```
-Then opt-in with dedicated key
+
+Then opt-in with dedicated key:
+
 ```bash
 gaiad tx provider opt-in 4 [consumer-pubkey] --from [YOUR_KEY] --chain-id GAIA --gas auto --gas-adjustment 2 --gas auto --node https://provider-test-rpc.intento.zone/
 ```
@@ -228,8 +231,6 @@ intentod start
 
 3. **Enable and Start the Service**
 
-4. **Enable and Manage the Service**
-
 Reload systemd and enable your service:
 
 ```bash
@@ -248,7 +249,16 @@ sudo journalctl -u intentod -f -o cat
 
 After 2/3 of the voting power runs their node, the chain produces blocks.
 
+
+### 4. Create a governour
+
 Next, you can set your node up to be a governor on the consumer chain by registering as a validator.
+
+- **Request tokens from the faucet**:
+
+**$request into1...**
+
+For the account you will broadcast transactions with.
 
 - **Retrieve Your Validator Pubkey**:
   ```bash
@@ -277,10 +287,14 @@ Next, you can set your node up to be a governor on the consumer chain by registe
   intentod tx staking create-validator \
       /tmp/validator.json \
       --from [YOUR_KEY] \
-      --chain-id GAIA \
+      --chain-id intento-ics-test-1 \
       --gas auto
       --gas-adjustment 2
   ```
+
+
+That is it! You are now a validator on the Intento testnet.
+
 ---
 
 ## IBC Connection Information
