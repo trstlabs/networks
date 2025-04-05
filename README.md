@@ -28,7 +28,7 @@ Each network directory contains an example installation script (`create_node.sh`
 ```bash
 cd <network-directory>
 chmod +x create_node.sh
-./create_node.sh
+./create_node.sh MONIKER
 ```
 
 This script will install dependencies, download the required binaries, and configure the node accordingly. For validators, it is also necesarry to opt-in to the consumer chain. More information is available in the respective network's README.
