@@ -136,7 +136,7 @@ Follow these steps:
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "1000000uatom",
+      "amount": "1200000uatom",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",
@@ -269,7 +269,7 @@ For the account you will broadcast transactions with.
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "1000000uinto",
+      "amount": "1200000uinto",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",
