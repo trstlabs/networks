@@ -44,7 +44,7 @@ We implement an allowlist for the validators. If you are not on the allowlist, y
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v0.9.2-r1
+git checkout v0.9.4
 make install
 ```
 
@@ -72,10 +72,10 @@ intentod init [your-moniker] --chain-id intento-ics-test-1
 From ./create_node.sh example script:
 
 ```bash
-config_toml="$HOME./intento/config/config.toml"
-client_toml="$HOME./intento/config/client.toml"
-app_toml="$HOME./intento/config/app.toml"
-genesis_json="$HOME./intento/config/genesis.json"
+config_toml="$HOME/.intento/config/config.toml"
+client_toml="$HOME/.intento/config/client.toml"
+app_toml="$HOME/.intento/config/app.toml"
+genesis_json="$HOME/.intento/config/genesis.json"
 
 ATOM="ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2"
 CHAINID="intento-ics-test-1"
@@ -136,7 +136,7 @@ Follow these steps:
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "1000000uatom",
+      "amount": "1200000uatom",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",
@@ -269,7 +269,7 @@ For the account you will broadcast transactions with.
   cat <<EOF > /tmp/validator.json
   {
       "pubkey": "[PUBKEY]",
-      "amount": "1000000uinto",
+      "amount": "1200000uinto",
       "moniker": "[MONIKER]",
       "identity": "validator",
       "website": "https://intentotestnet.example.com",
