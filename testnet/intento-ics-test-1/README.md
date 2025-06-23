@@ -44,7 +44,7 @@ We implement an allowlist for the validators. If you are not on the allowlist, y
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v0.9.4-r2
+git checkout v0.9.4-r3
 make install
 ```
 
