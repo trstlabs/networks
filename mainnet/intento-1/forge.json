@@ -1,7 +1,7 @@
 {
   "display": {
     "name": "Intento",
-    "description": "Intento is the blockchain for secure, self-custodial, and scalable orchestration of intent-based flows across any blockchain. Using IBC, Interchain Accounts, and Interchain Queries, Intento enables real-time execution of user-defined actions based on conditions—without relying on smart contracts. From DCA to complex multi-chain logic, Intento powers the next generation of interchain automation.",
+    "description": "Intento is the purpose-built blockchain for secure, self-custodial, and scalable orchestration of intent-based flows across any blockchain. Using IBC, Interchain Accounts, and Interchain Queries, Intento enables real-time execution of user-defined actions based on conditions—without relying on smart contracts. From DCA to complex multi-chain logic, Intento powers the next generation of interchain automation.",
     "links": {
       "logo": "https://docs.intento.zone/img/icon.png",
       "discord": "https://discord.com/invite/hsVf9sYyZW",
@@ -10,21 +10,13 @@
       "telegram": "https://t.me/intentoannouncements",
       "twitter": "https://x.com/intentozone",
       "website": "https://www.intento.zone",
-      "whitepaper": "https://intento.zone/blog"
+      "whitepaper": "https://intento.zone/post/introducing-into-the-token-powering-interchain-flows"
     },
-    "widgets": [
-      {
+    "widget": {
         "title": "Submit your intent-based flow",
         "description": "Use the Intento Portal to build and execute interchain logic. Submit flows that span time, chains, and conditions.",
         "buttonText": "Open Intento Portal",
         "buttonUrl": "https://portal.intento.zone"
-      },
-      {
-        "title": "Stream tokens over time",
-        "description": "Create smart DCA swaps using Tokenstream.fun, powered by Intento flows and Skip:Go.",
-        "buttonText": "Launch tokenstream.fun",
-        "buttonUrl": "https://tokenstream.fun"
       }
-    ]
-  }
+   }
 }
