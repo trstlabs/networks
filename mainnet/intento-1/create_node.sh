@@ -16,8 +16,8 @@ MONIKER="$1"
 DENOM="uinto"
 ATOM="ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9"
 VERSION="v1.0.0"
-PEERS=""  # Add persistent peers
-SEED=""   # Add seed nodes
+PEERS="06bf7c52e0584d91a9d7c9f71141f246c3347d5a@144.126.208.31"
+SEED="3a1d847563a1ea3b3e6195c3e4f9e90d9b4f7b56@tenderseed.ccvalidators.com:29111" 
 GENESIS_URL="https://raw.githubusercontent.com/trstlabs/networks/main/mainnet/intento-1/genesis.json"
 
 if [[ $# -lt 1 ]]; then
@@ -54,19 +54,17 @@ sudo chmod +x "$BIN_DIR/intentod"
 # wasmvm
 wget -O /usr/local/lib/libwasmvm.x86_64.so https://github.com/CosmWasm/wasmvm/releases/download/v2.2.4/libwasmvm.x86_64.so
 sudo ldconfig /usr/local/lib
-# ----------------------
-# Setup cosmovisor directory
-# ----------------------
-HOME_DIR="$HOME"
-COSMOVISOR_GENESIS="$HOME_DIR/.intento/cosmovisor/genesis/bin"
-mkdir -p "$COSMOVISOR_GENESIS"
-cp "$BIN_DIR/intentod" "$COSMOVISOR_GENESIS/intentod"
 
 # Backup old data
 if [[ -d "$HOME_DIR/.intento" ]]; then
     TIMESTAMP=$(date +%Y%m%d_%H%M%S)
     mv "$HOME_DIR/.intento" "$HOME_DIR/.intento.bak_$TIMESTAMP"
 fi
+
+# Setup cosmovisor directory
+COSMOVISOR_GENESIS="$HOME_DIR/.intento/cosmovisor/genesis/bin"
+mkdir -p "$COSMOVISOR_GENESIS"
+cp "$BIN_DIR/intentod" "$COSMOVISOR_GENESIS/intentod"
 
 # ----------------------
 # Init node

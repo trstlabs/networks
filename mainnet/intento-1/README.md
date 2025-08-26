@@ -57,6 +57,7 @@ curl -o $HOME/.intento/config/genesis.json \
 
 **Replace Validator Key (validators only):**
 
+Only in case of reusing private key, not recommended. Optional.
 ```bash
 mv /path/to/priv_validator_key.json \
    $HOME/.intento/config/priv_validator_key.json
@@ -67,8 +68,8 @@ _Do this **before** starting node to avoid double signing._
 **Configure Networking:**
 
 ```bash
-SEED="<seed1@ip:port,seed2@ip:port>"
-PEERS="<peer1@ip:port,peer2@ip:port>"
+PEERS="06bf7c52e0584d91a9d7c9f71141f246c3347d5a@144.126.208.31"
+SEED="3a1d847563a1ea3b3e6195c3e4f9e90d9b4f7b56@tenderseed.ccvalidators.com:29111" 
 
 config="$HOME/.intento/config/config.toml"
 app="$HOME/.intento/config/app.toml"
@@ -103,6 +104,8 @@ intentod tendermint show-validator
 ```
 
 **Opt-in (replace `[YOUR_KEY]`):**
+
+Recommended here to pass in the consumer pubkey as an argument (not having [consumer-pubkey] means reusing the Cosmos Hub validator pubkey).
 
 ```bash
 gaiad tx provider opt-in 22 [consumer-pubkey] \
