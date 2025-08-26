@@ -37,7 +37,7 @@ Spawn time is critical.
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v1.0.0
+git checkout v1.0.1
 make install
 intentod version
 ```
@@ -75,11 +75,12 @@ config="$HOME/.intento/config/config.toml"
 app="$HOME/.intento/config/app.toml"
 client="$HOME/.intento/config/client.toml"
 
-ATOM="ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9"
+ATOM="ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9" # ATOM on intento-1 assuming ibc transfer channel 1from cosmoshub-4. Placeholder, may need to be replaced with actual hash.
+OSMO="ibc/13B2C536BB057AC79D5616B8EA1B9540EC1F2170718CAFF6F0083C966FFFED0B" # OSMO on intento-1 assuming ibc transfer channel 2 from osmosis-1. Placeholder, may need to be replaced with actual hash.
 
 sed -i "s|^seeds *=.*|seeds = \"$SEED\"|" $config
 sed -i "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|" $config
-sed -i "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.005uinto,0.001$ATOM\"|" $app
+sed -i "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.005uinto,0.001$ATOM\,0.005$OSMO\"|" $app
 sed -i "s|^chain-id *=.*|chain-id = \"intento-1\"|" $client
 ```
 
