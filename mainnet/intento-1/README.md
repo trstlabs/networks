@@ -15,7 +15,7 @@ Spawn time is critical.
 - **Chain ID**: `intento-1`
 - **Binary**: `intentod`
 - **ICS Parameters**: See [Forge](https://forge.cosmos.network/chain/22)
-
+- **Genesis Hash** 45428d023b0dd3633e5eab51aa940ed8375900f6b9a7fcb604157e04832f2a4d
 ---
 
 ## **1. Prepare the Consumer Node**
@@ -244,3 +244,17 @@ client_refresh_rate = '1/200'
 - Always keep provider and consumer nodes in sync.
 - Avoid key reuse across environments to prevent double signing.
 - Monitor spawn schedule closely — missed spawn = missed rewards + possible slash.
+
+
+## Node Info
+
+RPC:
+https://rpc-mainnet.intento.zone:443
+https://rpc.intento.ccnodes.com:443
+
+LCD:
+https://lcd-mainnet.intento.zone:443
+https://api.intento.ccnodes.com:443
+
+GRPC:
+grpc.intento.ccnodes.com:443
