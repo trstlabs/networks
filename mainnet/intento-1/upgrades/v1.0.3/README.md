@@ -7,7 +7,7 @@ order: 2
 
 # Intento v1.0.3 Upgrade, Instructions
 
-- Chain upgrade point: `September 16th 2025, 12:00 UTC (approximately)`, at height `1098000`;
+- Chain upgrade point: `September 16th 2025, 12:00 UTC (approximately)`, at height `1100000`;
 - Go version: `v1.24.6`
 - Release: https://github.com/trstlabs/intento/releases/tag/v1.0.3
 
@@ -137,7 +137,7 @@ Make sure Intento v1.0.3 is installed by either downloading a [compatible binary
 Run Intento v1.0.1 till upgrade height, the node will panic:
 
 ```shell
-ERR UPGRADE "v1.0.3" NEEDED at height: 1098000: upgrade to v1.0.3 and applying upgrade "v1.0.3" at height: 1098000
+ERR UPGRADE "v1.0.3" NEEDED at height: 1100000: upgrade to v1.0.3 and applying upgrade "v1.0.3" at height: 1100000
 ```
 
 Stop the node, and switch the binary to **Intento v1.0.3** and re-start by `intentod start`.
@@ -227,7 +227,7 @@ During the network upgrade, core Intento team will be keeping an ever vigilant e
 
 Steps to skip this upgrade proposal are simply to resume the intento-1 network with the (downgraded) v1.0.1 binary using the following command:
 
-> intentod start --unsafe-skip-upgrade 1098000
+> intentod start --unsafe-skip-upgrade 1100000
 
 Note: There is no particular need to restore a state snapshot prior to the upgrade height, unless specifically directed by core Intento team.
 
