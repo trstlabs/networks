@@ -1,0 +1,5 @@
+{
+    "binaries": {
+        "linux/amd64": "https://github.com/trstlabs/intento/releases/download/v1.0.3/intentod_linux_amd64_v1.0.3"
+    }
+}
