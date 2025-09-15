@@ -19,7 +19,7 @@ This repository contains chain configurations and setup instructions for running
 
 ## Overview
 
-This repository provides essential resources for node operators and validators participating in the `Intento` network. It includes configuration files, scripts, and guidelines to help streamline the setup process. It is based and inspired from the Elys Network networks repo and others.
+This repository provides essential resources for node operators and validators participating in the `Intento` network. It includes configuration files, scripts, and guidelines to help streamline the setup process. 
 
 ## Installation
 
@@ -69,8 +69,7 @@ Other useful links
 
 - [Intento website](https://intento.zone/)
 - [Discord](https://discord.gg/hsVf9sYyZW)
-- [TriggerPortal - one-stop tool for intent-based flows](https://triggerportal.zone/)
+- [Intento Portal](https://portal.intento.zone/)
+- [tokenstream.fun](https://tokenstream.fun/)
 - [Block Explorer](https://explorer.intento.zone/)
-- [Testnet Points Program ](https://github.com/trstlabs/intento-testnet-points-program)
-- [Networks repository](https://github.com/trstlabs/networks)
 - [TRST Labs website](https://trstlabs.xyz/)
