@@ -37,7 +37,7 @@ Spawn time is critical.
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v1.0.3
+git checkout v1.0.4
 make install
 intentod version
 ```
