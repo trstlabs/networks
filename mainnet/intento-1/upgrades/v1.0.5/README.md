@@ -57,7 +57,7 @@ The upgraded Intento mainnet network, `intento-1`, will run [Intento v1.0.5](htt
    ```bash
    # Download the new binary
    cd ~/go/bin
-   wget https://github.com/trstlabs/intento/releases/download/v1.0.5-hotfix/intentod_linux_amd64_v1.0.5 -O intentod
+   wget https://github.com/trstlabs/intento/releases/download/v1.0.5/intentod_linux_amd64_v1.0.5 -O intentod
    chmod +x intentod
    ```
 
@@ -80,7 +80,7 @@ The upgraded Intento mainnet network, `intento-1`, will run [Intento v1.0.5](htt
    ```bash
    mkdir -p ~/.intentod/cosmovisor/upgrades/v1.0.5/bin
    cd ~/.intentod/cosmovisor/upgrades/v1.0.5/bin
-   wget https://github.com/trstlabs/intento/releases/download/v1.0.5-hotfix/intentod_linux_amd64_v1.0.5 -O intentod
+   wget https://github.com/trstlabs/intento/releases/download/v1.0.5/intentod_linux_amd64_v1.0.5 -O intentod
    chmod +x intentod
    ```
 
