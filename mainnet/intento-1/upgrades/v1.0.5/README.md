@@ -7,11 +7,12 @@ order: 2
 
 # Intento v1.0.5 Upgrade, Instructions
 
-- **Chain upgrade point**: `23 October 2025`, at height `3550000`
+- **Chain upgrade point**: `23 October 2025`, at height `3455000`
 - **Go version**: `v1.24.6` (same as previous version)
 - **CometBFT version**: v0.38.19 updated.
 - **Release**: https://github.com/trstlabs/intento/releases/tag/v1.0.5
-
+- **commit**: `a98e7d83005f4da52e0d5a8d13b5009ba2d94a1a`
+- **hotfix**: `v1.0.5-hotfix` (for v1.0.5)
 
 ## Chain ID
 
@@ -56,7 +57,7 @@ The upgraded Intento mainnet network, `intento-1`, will run [Intento v1.0.5](htt
    ```bash
    # Download the new binary
    cd ~/go/bin
-   wget https://github.com/trstlabs/intento/releases/download/v1.0.5/intentod_linux_amd64_v1.0.5 -O intentod
+   wget https://github.com/trstlabs/intento/releases/download/v1.0.5-hotfix/intentod_linux_amd64_v1.0.5 -O intentod
    chmod +x intentod
    ```
 
@@ -79,7 +80,7 @@ The upgraded Intento mainnet network, `intento-1`, will run [Intento v1.0.5](htt
    ```bash
    mkdir -p ~/.intentod/cosmovisor/upgrades/v1.0.5/bin
    cd ~/.intentod/cosmovisor/upgrades/v1.0.5/bin
-   wget https://github.com/trstlabs/intento/releases/download/v1.0.5/intentod_linux_amd64_v1.0.5 -O intentod
+   wget https://github.com/trstlabs/intento/releases/download/v1.0.5-hotfix/intentod_linux_amd64_v1.0.5 -O intentod
    chmod +x intentod
    ```
 
