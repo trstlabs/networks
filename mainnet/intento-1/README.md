@@ -1,6 +1,6 @@
 # **Joining the Intento Mainnet (GG-PoS)**
 
-This is the **Intento Chain****.
+This is the **Intento Chain**.
 If you’ve run Cosmos SDK-based chains with PoS, this will feel familiar.
 
 ---
