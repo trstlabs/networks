@@ -7,7 +7,7 @@ order: 2
 
 # Intento v1.1.0 Upgrade, Instructions
 
-- **Chain upgrade point**: TBD
+- **Chain upgrade point**: 10629234 [check Governance](https://explorer.intento.zone/intento-mainnet/gov) 
 - **Go version**: `v1.24.6` (same as previous version)
 - **CometBFT version**: v0.38.19 updated.
 - **Release**: https://github.com/trstlabs/intento/releases/tag/v1.1.0
