@@ -1,24 +1,20 @@
-# **Joining the Intento Mainnet (ICS)**
+# **Joining the Intento Mainnet (GG-PoS)**
 
-This is the **Intento Consumer Chain** (Consumer ID `22`) under Cosmos Hub’s **Interchain Security (ICS)**.
-If you’ve run ICS consumers like Neutron, Stride, or Elys, this will feel familiar — but read carefully.
-Spawn time is critical.
+This is the **Intento Chain**.
+If you’ve run Cosmos SDK-based chains with PoS, this will feel familiar.
 
 ---
 
 ## **Before You Start**
 
-- **Allowlist**: Only allowlisted Hub validators can join. If you’re active on Hub mainnet and not on the list, contact us on Discord.
-- **Provider Requirement**: You must run a synced **Cosmos Hub node** and be in the **active set** or top 20 inactive.
-- **Spawn Time**: If you’re not opted in and synced before spawn, you’ll miss inclusion and may be slashed.
-- **Consumer ID**: `22`
+- **Governance-gated PoS**: Only governance-approved validators can join under our [GG-PoS](https://docs.intento.zone/reference/consensus) mechanism.
+
+
 - **Chain ID**: `intento-1`
 - **Binary**: `intentod`
-- **ICS Parameters**: See [Forge](https://forge.cosmos.network/chain/22)
 - **Genesis Hash** 45428d023b0dd3633e5eab51aa940ed8375900f6b9a7fcb604157e04832f2a4d
----
 
-## **1. Prepare the Consumer Node**
+## **1. Prepare the Node**
 
 **Hardware Minimums:**
 
@@ -37,7 +33,7 @@ Spawn time is critical.
 ```bash
 git clone https://github.com/trstlabs/intento.git
 cd intento
-git checkout v1.0.4
+git checkout v1.1.0
 make install
 intentod version
 ```
@@ -55,21 +51,11 @@ curl -o $HOME/.intento/config/genesis.json \
   https://raw.githubusercontent.com/trstlabs/networks/main/mainnet/intento-1/genesis.json
 ```
 
-**Replace Validator Key (validators only):**
-
-Only in case of reusing private key, not recommended. Optional.
-```bash
-mv /path/to/priv_validator_key.json \
-   $HOME/.intento/config/priv_validator_key.json
-```
-
-_Do this **before** starting node to avoid double signing._
-
 **Configure Networking:**
 
 ```bash
 PEERS="06bf7c52e0584d91a9d7c9f71141f246c3347d5a@144.126.208.31:26656"
-SEED="3a1d847563a1ea3b3e6195c3e4f9e90d9b4f7b56@tenderseed.ccvalidators.com:29111" 
+SEED=" 
 
 config="$HOME/.intento/config/config.toml"
 app="$HOME/.intento/config/app.toml"
@@ -84,49 +70,8 @@ sed -i "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.005uinto,0.001$ATOM\
 sed -i "s|^chain-id *=.*|chain-id = \"intento-1\"|" $client
 ```
 
----
 
-## **2. Opt-in on Cosmos Hub**
-
-**Build Gaia:**
-
-```bash
-git clone https://github.com/cosmos/gaia.git
-cd gaia
-git checkout v25.1.0
-make install
-gaiad version
-```
-
-**Get Consumer Consensus Pubkey:**
-
-```bash
-intentod tendermint show-validator
-```
-
-**Opt-in (replace `[YOUR_KEY]`):**
-
-Recommended here to pass in the consumer pubkey as an argument (not having [consumer-pubkey] means reusing the Cosmos Hub validator pubkey).
-
-```bash
-gaiad tx provider opt-in 22 [consumer-pubkey] \
-  --from [YOUR_KEY] \
-  --chain-id cosmoshub-4 \
-  --gas auto --gas-adjustment 2 \
-  --node https://rpc.cosmos.directory/cosmoshub
-```
-
-**Verify Opt-in:**
-
-```bash
-gaiad q provider consumer-opted-in-validators 22 \
-  --chain-id cosmoshub-4 \
-  --node https://rpc.cosmos.directory/cosmoshub
-```
-
----
-
-## **3. Start the Consumer Node**
+## **3. Start the Node**
 
 **Direct Run:**
 
@@ -159,15 +104,10 @@ sudo systemctl start intentod
 journalctl -u intentod -f -o cat
 ```
 
-Once 2/3 Hub voting power is running, blocks will produce.
 
----
 
-## **4. Register as Consumer Validator (Governor)**
-
-_After update-consumer runs and validator set is finalized._
-
-**Get INTO tokens** (from testnet points or request via Discord/email).
+## **4. Register as Validator 
+**Get INTO tokens** .
 
 **Pubkey:**
 
@@ -189,7 +129,7 @@ intentod tx staking create-validator \
   --commission-rate "0.1" \
   --commission-max-rate "0.2" \
   --commission-max-change-rate "0.01" \
-  --min-self-delegation "1" \
+  --min-self-delegation "2000000" \
   --from [YOUR_KEY] \
   --chain-id intento-1 \
   --gas auto --gas-adjustment 2
@@ -228,10 +168,12 @@ max_block_time = '30s'
 client_refresh_rate = '1/200'
 ```
 
-**3. Channels**
+**3. IBC Channels**
 
-- **Cosmos Hub to Intento** — channel-x
+- **Cosmos Hub to Intento** — channel-1490
 - **Intento to Cosmos Hub** — channel-1
+
+More: https://explorer.intento.zone/intento-mainnet/ibc
 
 **4. Monitor & Maintain**
 
@@ -246,15 +188,10 @@ client_refresh_rate = '1/200'
 - Monitor spawn schedule closely — missed spawn = missed rewards + possible slash.
 
 
-## Node Info
+## Endpoints
 
 RPC:
 https://rpc-mainnet.intento.zone:443
-https://rpc.intento.ccnodes.com:443
 
-LCD:
+REST:
 https://lcd-mainnet.intento.zone:443
-https://api.intento.ccnodes.com:443
-
-GRPC:
-grpc.intento.ccnodes.com:443
