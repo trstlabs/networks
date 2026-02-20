@@ -11,7 +11,7 @@ order: 2
 - **Go version**: `v1.24.6` (same as previous version)
 - **CometBFT version**: v0.38.19 updated.
 - **Release**: https://github.com/trstlabs/intento/releases/tag/v1.1.0
-- **commit**: `deea0dc5e7840b84fee0bd3a8c1ef35335ad2315`
+- **commit**: `a2d3d3ded901872e97938762cb02f6fa4fcb6061`
 
 This guide outlines the process for validators upgrading to Intento v1.1.0. This upgrade introduces a major change in how validators are handled, transitioning from Interchain Security (ICS) to a sovereign validator set.
 
