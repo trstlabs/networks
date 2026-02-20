@@ -1,5 +1,5 @@
 {
     "binaries": {
-        "linux/amd64": "https://github.com/trstlabs/intento/releases/download/v1.1.0/intentod_linux_amd64_v1.1.0?checksum=sha256:1510f20c0ebed5419f55d124fdafa65b6fa809f1940be5620bce2f3c23d1dcaa"
+        "linux/amd64": "https://github.com/trstlabs/intento/releases/download/v1.1.0/intentod_linux_amd64_v1.1.0?checksum=sha256:14966c7f9e480ea045fbe50a145831e49b22c91a05ce480f42d94f23738b7c24"
     }
 }
